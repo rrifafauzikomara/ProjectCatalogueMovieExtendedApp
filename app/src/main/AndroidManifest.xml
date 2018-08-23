@@ -3,10 +3,13 @@
     package="xyz.rifafauzi.id.projectcataloguemovieextendedapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <permission android:name="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
-        android:protectionLevel="normal"/>
-    <permission android:name="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE"
-        android:protectionLevel="normal"/>
+
+    <permission
+        android:name="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
+        android:protectionLevel="normal" />
+    <permission
+        android:name="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:allowBackup="true"
@@ -16,23 +19,40 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--<provider-->
-            <!--android:name=".provider.FavoriteProvider"-->
-            <!--android:authorities="xyz.rifafauzi.id.projectcataloguemovieextendedapp"-->
-            <!--android:exported="true"-->
-            <!--android:readPermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"-->
-            <!--android:writePermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE" />-->
+         <provider
+         android:name=".provider.FavoriteProvider"
+         android:authorities="xyz.rifafauzi.id.projectcataloguemovieextendedapp"
+         android:exported="true"
+         android:readPermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
+         android:writePermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE" />
 
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".category.MostPopularActivity"
+            android:label="Most Popular Movies" />
+        <activity
+            android:name=".category.NowPlayingActivity"
+            android:label="Now Playing Movies" />
+        <activity
+            android:name=".category.TopRatedActivity"
+            android:label="Top Rated Movies" />
+        <activity
+            android:name=".category.UpComingActivity"
+            android:label="Up Coming Movies" />
+        <activity
+            android:name=".category.FavoriteActivity"
+            android:label="Favorite Movies" />
+        <activity android:name=".DetailMovieActivity"
+            android:theme="@style/AppTheme.SplashScreen"/>
     </application>
 
 </manifest>

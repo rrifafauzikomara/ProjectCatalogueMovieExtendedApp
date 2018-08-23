@@ -14,6 +14,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.DetailMovieActivity;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -46,18 +48,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
         holder.desc.setText(movies.getOverview());
         holder.tgl.setText(movies.getReleaseDate());
 
-//        holder.cv.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context, DetailMovieActivity.class);
-//                i.putExtra("title", movies.getTitle());
-//                i.putExtra("poster_path", movies.getPosterPath());
-//                i.putExtra("overview", movies.getOverview());
-//                i.putExtra("release_date", movies.getReleaseDate());
-//                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(i);
-//            }
-//        });
+        holder.cv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailMovieActivity.class);
+                i.putExtra("title", movies.getTitle());
+                i.putExtra("poster_path", movies.getPosterPath());
+                i.putExtra("overview", movies.getOverview());
+                i.putExtra("release_date", movies.getReleaseDate());
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
 
     }
 

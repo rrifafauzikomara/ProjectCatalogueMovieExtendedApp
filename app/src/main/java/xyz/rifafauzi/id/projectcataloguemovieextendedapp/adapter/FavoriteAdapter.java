@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.DetailMovieActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Favorite;
 
@@ -50,18 +51,18 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.judul.setText(favorite.getName());
         holder.desc.setText(favorite.getDescription());
         holder.tgl.setText(favorite.getDate());
-//        holder.cv_listMovie.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(context, DetailMovieActivity.class);
-//                i.putExtra("title", favorite.getName());
-//                i.putExtra("poster_path", favorite.getPoster());
-//                i.putExtra("overview", favorite.getDescription());
-//                i.putExtra("release_date", favorite.getDate());
-//                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                context.startActivity(i);
-//            }
-//        });
+        holder.cv_listMovie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, DetailMovieActivity.class);
+                i.putExtra("title", favorite.getName());
+                i.putExtra("poster_path", favorite.getPoster());
+                i.putExtra("overview", favorite.getDescription());
+                i.putExtra("release_date", favorite.getDate());
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
+            }
+        });
         Log.e("DATE", ""+favorite.getDate());
     }
 
