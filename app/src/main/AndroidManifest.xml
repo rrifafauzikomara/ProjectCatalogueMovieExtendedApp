@@ -3,6 +3,7 @@
     package="xyz.rifafauzi.id.projectcataloguemovieextendedapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
         android:name="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
@@ -18,13 +19,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <provider
+            android:name=".provider.FavoriteProvider"
+            android:authorities="xyz.rifafauzi.id.projectcataloguemovieextendedapp"
+            android:exported="true"
+            android:readPermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
+            android:writePermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE" />
 
-         <provider
-         android:name=".provider.FavoriteProvider"
-         android:authorities="xyz.rifafauzi.id.projectcataloguemovieextendedapp"
-         android:exported="true"
-         android:readPermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.READ_DATABASE"
-         android:writePermission="xyz.rifafauzi.id.projectcataloguemovieextendedapp.WRITE_DATABASE" />
+        <receiver android:name=".widget.ImagesBannerWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/images_banner_widget_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
             android:name=".MainActivity"
@@ -51,8 +65,10 @@
         <activity
             android:name=".category.FavoriteActivity"
             android:label="Favorite Movies" />
-        <activity android:name=".DetailMovieActivity"
-            android:theme="@style/AppTheme.SplashScreen"/>
+        <activity
+            android:name=".DetailMovieActivity"
+            android:theme="@style/AppTheme.SplashScreen" />
+
     </application>
 
 </manifest>

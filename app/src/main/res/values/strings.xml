@@ -17,4 +17,6 @@
     <string name="now_playing">Now Playing</string>
     <string name="email">rifafauzi6@gmail.com</string>
     <string name="nama">R Rifa Fauzi Komara</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="no_data">No Data Found</string>
 </resources>

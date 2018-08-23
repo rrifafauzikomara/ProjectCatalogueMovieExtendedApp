@@ -20,6 +20,7 @@ import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
 
+    public final static String EXTRA_MOVIE = "movie";
     private Context context;
     private List<Movies> listMovies;
 
