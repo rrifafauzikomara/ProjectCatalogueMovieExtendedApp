@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ProjectCatalogueMovieExtendedApp</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="action_settings">Settings</string>
+    <string name="most_popular">Most Popular</string>
+    <string name="up_coming">Up Coming</string>
+    <string name="top_rated">Top Rated</string>
+    <string name="favorite">Favorite</string>
+    <string name="share">Share</string>
+    <string name="movie_date">Movie Date</string>
+    <string name="search">Search</string>
+    <string name="movie_name">Movie Name</string>
+    <string name="movie_description">Movie Description</string>
+    <string name="detail_movies">Detail Movies</string>
+    <string name="ganti_bahasa">Ganti Bahasa</string>
+    <string name="now_playing">Now Playing</string>
+    <string name="email">rifafauzi6@gmail.com</string>
+    <string name="nama">R Rifa Fauzi Komara</string>
+</resources>
