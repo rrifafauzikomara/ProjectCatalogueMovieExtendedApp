@@ -19,4 +19,8 @@
     <string name="nama">R Rifa Fauzi Komara</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="no_data">No Data Found</string>
+    <string name="reminderSaveDaily">Save Reminder Daily</string>
+    <string name="reminderCancelDaily">Cancel Reminder Daily</string>
+    <string name="reminderSave">Save Reminder</string>
+    <string name="reminderCancel">Cancle Reminder</string>
 </resources>
