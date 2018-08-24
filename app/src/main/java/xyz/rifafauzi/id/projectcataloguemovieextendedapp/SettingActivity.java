@@ -20,10 +20,10 @@ import xyz.rifafauzi.id.projectcataloguemovieextendedapp.service.ReminderRelease
 
 public class SettingActivity extends AppCompatActivity {
 
-    @BindView(R.id.dailyRemind)
-    Switch dailyRemind;
-    @BindView(R.id.relaseRemind)
-    Switch releaseRemind;
+    @BindView(R.id.dailyReminder)
+    Switch dailyReminder;
+    @BindView(R.id.relaseReminder)
+    Switch releaseReminder;
 
     public ReminderReceiver reminderReceiverDaily;
     public ReminderReleaseReceiver reminderReceiverRelease;
@@ -52,7 +52,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onConfigurationChanged(newConfig);
     }
 
-    @OnCheckedChanged(R.id.dailyRemind)
+    @OnCheckedChanged(R.id.dailyReminder)
     public  void  setDailyRemind(boolean isChecked){
         editorDailyReminder = sDailyReminder.edit();
         if (isChecked) {
@@ -65,7 +65,7 @@ public class SettingActivity extends AppCompatActivity {
             dailyReminderOff();
         }
     }
-    @OnCheckedChanged(R.id.relaseRemind)
+    @OnCheckedChanged(R.id.relaseReminder)
     public  void setReleaseRemind(boolean isChecked){
         editorReleaseReminder = sReleaseReminder.edit();
         if (isChecked) {
@@ -89,14 +89,14 @@ public class SettingActivity extends AppCompatActivity {
         sReleaseReminder = getSharedPreferences(DatabaseContract.KEY_HEADER_UPCOMING_REMINDER, MODE_PRIVATE);
         sDailyReminder = getSharedPreferences(DatabaseContract.KEY_HEADER_DAILY_REMINDER, MODE_PRIVATE);
         boolean checkSwUpcomingReminder = sReleaseReminder.getBoolean(DatabaseContract.KEY_FIELD_UPCOMING_REMINDER, false);
-        releaseRemind.setChecked(checkSwUpcomingReminder);
+        releaseReminder.setChecked(checkSwUpcomingReminder);
         boolean checkSwDailyReminder = sDailyReminder.getBoolean(DatabaseContract.KEY_FIELD_DAILY_REMINDER, false);
-        dailyRemind.setChecked(checkSwDailyReminder);
+        dailyReminder.setChecked(checkSwDailyReminder);
     }
 
     private void releaseReminderOn() {
-        String time = "02:46";
-        String message = "Release Movie , please Wait come Back Soon";
+        String time = "03:31";
+        String message = "Release Movie, please wait come back soon";
         reminderPreference.setReminderReleaseTime(time);
         reminderPreference.setReminderReleaseMessage(message);
         reminderReceiverRelease.setReminder(SettingActivity.this, DatabaseContract.TYPE_REMINDER_PREF, time, message);
@@ -106,8 +106,8 @@ public class SettingActivity extends AppCompatActivity {
         reminderReceiverRelease.cancelReminder(SettingActivity.this);
     }
     private void dailyReminderOn() {
-        String time = "02:46";
-        String message = "Daily Movie , please Wait come Back Soon";
+        String time = "03:31";
+        String message = "Daily Movie, please wait come back soon";
         reminderPreference.setReminderDailyTime(time);
         reminderPreference.setReminderDailyMessage(message);
         reminderReceiverDaily.setReminder(SettingActivity.this, DatabaseContract.TYPE_REMINDER_RECIEVE, time, message);

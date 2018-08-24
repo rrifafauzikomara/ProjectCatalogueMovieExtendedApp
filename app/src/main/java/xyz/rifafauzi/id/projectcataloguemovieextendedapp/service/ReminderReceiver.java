@@ -28,7 +28,7 @@ public class ReminderReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
         String message = intent.getStringExtra(DatabaseContract.EXTRA_MESSAGE_PREF);
-        String title = "Reminder Movie Daily";
+        String title = "Daily Reminder";
         int notifId = NOTIF_ID_REMINDER;  //type.equal
 
         showReminderNotification(context,title,message,notifId);
@@ -42,11 +42,10 @@ public class ReminderReceiver extends BroadcastReceiver {
                 .addNextIntent(intent)
                 .getPendingIntent(NOTIF_ID_REMINDER, PendingIntent.FLAG_UPDATE_CURRENT);
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context,message)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.drawable.ic_notifications)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setContentIntent(pendingIntent)
-                .setColor(ContextCompat.getColor(context,android.R.color.transparent))
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(alarmSound);
 

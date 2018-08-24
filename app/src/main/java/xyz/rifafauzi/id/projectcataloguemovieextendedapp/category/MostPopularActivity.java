@@ -21,8 +21,11 @@ import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.adapter.MovieAdapter;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.api.BaseApiService;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.api.Server;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.ResponseMovies;
+
+import static xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract.API_KEY;
 
 public class MostPopularActivity extends AppCompatActivity {
 
@@ -31,9 +34,6 @@ public class MostPopularActivity extends AppCompatActivity {
     List<Movies> listMovies = new ArrayList<>();
     ProgressDialog loading;
     BaseApiService apiService;
-
-    private final String api_key = BuildConfig.MOVIE_DB_API_KEY;
-    private final String language = "en-US";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +59,7 @@ public class MostPopularActivity extends AppCompatActivity {
 
     private void refresh(){
         loading = ProgressDialog.show(this, null, "Please wait...", true, false);
-        apiService.getPopularMovies(api_key, language).enqueue(new Callback<ResponseMovies>() {
+        apiService.getPopularMovies(DatabaseContract.API_KEY, DatabaseContract.LANG).enqueue(new Callback<ResponseMovies>() {
             @Override
             public void onResponse(Call<ResponseMovies> call, Response<ResponseMovies> response) {
                 if (response.isSuccessful()){

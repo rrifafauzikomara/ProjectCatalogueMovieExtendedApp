@@ -35,6 +35,7 @@ import xyz.rifafauzi.id.projectcataloguemovieextendedapp.category.MostPopularAct
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.category.NowPlayingActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.category.TopRatedActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.category.UpComingActivity;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.ResponseMovies;
 
@@ -47,8 +48,6 @@ public class MainActivity extends AppCompatActivity
     ProgressDialog loading;
     BaseApiService apiService;
 
-    private final String api_key = BuildConfig.MOVIE_DB_API_KEY;
-    private final String language = "en-US";
     private final String sort_by = "popularity.desc";
     private final String include_adult = "false";
     private final String include_video = "false";
@@ -121,7 +120,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void searchMovie(String keyword){
-        apiService.getSearchMovie(api_key, language, keyword, page, include_adult).enqueue(new Callback<ResponseMovies>() {
+        apiService.getSearchMovie(DatabaseContract.API_KEY, DatabaseContract.LANG, keyword, page, include_adult).enqueue(new Callback<ResponseMovies>() {
             @Override
             public void onResponse(Call<ResponseMovies> call, Response<ResponseMovies> response) {
                 if (response.isSuccessful()){
@@ -146,7 +145,7 @@ public class MainActivity extends AppCompatActivity
     private void refresh(){
         loading = ProgressDialog.show(this, null, "Please wait...", true, false);
 
-        apiService.getAllMovies(api_key, language, sort_by, include_adult, include_video, page).enqueue(new Callback<ResponseMovies>() {
+        apiService.getAllMovies(DatabaseContract.API_KEY, DatabaseContract.LANG, sort_by, include_adult, include_video, page).enqueue(new Callback<ResponseMovies>() {
             @Override
             public void onResponse(Call<ResponseMovies> call, Response<ResponseMovies> response) {
                 if (response.isSuccessful()){

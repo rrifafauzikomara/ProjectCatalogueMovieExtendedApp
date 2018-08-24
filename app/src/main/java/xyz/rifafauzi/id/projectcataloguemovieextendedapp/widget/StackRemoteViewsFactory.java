@@ -21,6 +21,7 @@ import java.util.concurrent.ExecutionException;
 
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.adapter.MovieAdapter;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Favorite;
 
 import static xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract.FavoriteColumns.CONTENT_URI;
@@ -79,7 +80,7 @@ public class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFa
         try {
             currentMovieFavorite = mWidgetItems.get(position);
             bmp = Glide.with(mContext)
-                    .load("http://image.tmdb.org/t/p/w185" + currentMovieFavorite.getPoster()).asBitmap()
+                    .load(DatabaseContract.LINK_IMAGE + currentMovieFavorite.getPoster()).asBitmap()
                     .error(new ColorDrawable(mContext.getResources().getColor(R.color.colorPrimaryDark)))
                     .into(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).get();
 

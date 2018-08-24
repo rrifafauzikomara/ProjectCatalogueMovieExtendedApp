@@ -58,7 +58,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         tgl = getIntent().getStringExtra("release_date");
 
         Glide.with(getApplicationContext())
-                .load(DatabaseContract.IMAGE+img)
+                .load(DatabaseContract.LINK_IMAGE+img)
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.error)
                 .into(tvImg);

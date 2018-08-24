@@ -6,10 +6,10 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -87,6 +87,7 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
                 Movies item = items.get(index);
 
                 int notifId = 200;
+
                 String title = items.get(index).getTitle();
                 String message = items.get(index).getOverview();
                 showNotification(context, title, message, notifId, item);
@@ -112,10 +113,9 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
         PendingIntent pendingIntent = PendingIntent.getActivity(context, notifId, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, message)
-                .setSmallIcon(R.mipmap.ic_launcher_round)
+                .setSmallIcon(R.drawable.ic_notifications)
                 .setContentTitle(title)
                 .setContentText(message)
-                .setColor(ContextCompat.getColor(context, android.R.color.transparent))
                 .setContentIntent(pendingIntent)
                 .setAutoCancel(true)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})

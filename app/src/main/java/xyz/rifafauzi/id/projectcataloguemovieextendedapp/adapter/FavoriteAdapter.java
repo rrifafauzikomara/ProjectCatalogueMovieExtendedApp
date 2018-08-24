@@ -16,6 +16,7 @@ import com.bumptech.glide.Glide;
 
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.DetailMovieActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Favorite;
 
 public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
@@ -44,7 +45,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     public void onBindViewHolder(ViewHolder holder, int position) {
         final Favorite favorite = getItem(position);
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185"+favorite.getPoster())
+                .load(DatabaseContract.LINK_IMAGE+favorite.getPoster())
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.error)
                 .into(holder.gmb);

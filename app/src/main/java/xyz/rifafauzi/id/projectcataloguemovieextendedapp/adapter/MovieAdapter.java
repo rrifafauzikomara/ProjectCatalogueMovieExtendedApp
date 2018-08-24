@@ -16,6 +16,7 @@ import java.util.List;
 
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.DetailMovieActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
@@ -41,7 +42,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     public void onBindViewHolder(ViewHolder holder, final int position) {
         final Movies movies = listMovies.get(position);
         Glide.with(context)
-                .load("http://image.tmdb.org/t/p/w185"+movies.getPosterPath())
+                .load(DatabaseContract.LINK_IMAGE+movies.getPosterPath())
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.error)
                 .into(holder.gmb);

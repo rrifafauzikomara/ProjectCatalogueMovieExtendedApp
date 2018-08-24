@@ -4,6 +4,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.BaseColumns;
 
+import xyz.rifafauzi.id.projectcataloguemovieextendedapp.BuildConfig;
+
 public final class DatabaseContract {
 
     public static final String AUTHORITY = "xyz.rifafauzi.id.projectcataloguemovieextendedapp";
@@ -32,8 +34,9 @@ public final class DatabaseContract {
     public static final String KEY_FIELD_UPCOMING_REMINDER = "checkedUpcoming";
     public static final String KEY_FIELD_DAILY_REMINDER = "checkedDaily";
     public final static String PREF_NAME = "reminderPreferences";
-    public static final String IMAGE = "http://image.tmdb.org/t/p/w185/";
+    public static final String LINK_IMAGE = "http://image.tmdb.org/t/p/w185/";
     public static final String LANG = "en-US";
+    public static final String API_KEY = BuildConfig.MOVIE_DB_API_KEY;
     public final static String KEY_REMINDER_Daily = "DailyTime";
     public final static String KEY_REMINDER_MESSAGE_Release = "reminderMessageRelease";
     public final static String KEY_REMINDER_MESSAGE_Daily = "reminderMessageDaily";
