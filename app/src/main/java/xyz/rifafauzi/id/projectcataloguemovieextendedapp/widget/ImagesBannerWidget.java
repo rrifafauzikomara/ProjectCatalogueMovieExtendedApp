@@ -42,10 +42,10 @@ public class ImagesBannerWidget extends AppWidgetProvider {
         Intent toastIntent = new Intent(context, ImagesBannerWidget.class);
         toastIntent.setAction(ImagesBannerWidget.TOAST_ACTION);
         toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-
         intent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)));
-        PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0,
-                toastIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        PendingIntent toastPendingIntent = PendingIntent.getBroadcast(context, 0, toastIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT);
         views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent);
 
         // Instruct the widget manager to update the widget

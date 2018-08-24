@@ -28,7 +28,8 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:padding="5dp"
-            android:src="@android:drawable/ic_menu_search" />
+            android:src="@drawable/ic_add" />
+
     </LinearLayout>
 
     <Switch

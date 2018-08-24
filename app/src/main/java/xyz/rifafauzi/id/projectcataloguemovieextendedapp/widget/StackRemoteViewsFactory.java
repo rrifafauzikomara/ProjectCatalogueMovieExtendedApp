@@ -120,6 +120,5 @@ public class StackRemoteViewsFactory implements RemoteViewsService.RemoteViewsFa
     public boolean hasStableIds() {
         return false;
     }
-
-
+    
 }
