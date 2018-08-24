@@ -8,7 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.os.Parcelable;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -43,7 +42,7 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
     }
     @Override
     public void onReceive(Context context, Intent intent) {
-        getNowPlayingMovie(context);
+        getUpCommingMovie(context);
     }
 
     public void setReminder(Context context, String type, String time, String message){
@@ -73,9 +72,9 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
         Toast.makeText(context,R.string.reminderCancel, Toast.LENGTH_SHORT).show();
     }
 
-    private void getNowPlayingMovie(final Context context){
+    private void getUpCommingMovie(final Context context){
         BaseApiService service = RetrofitClient.getClient(BASE_URL_API).create(BaseApiService.class);
-        Call<ResponseMovies> call = service.getNowPlayingMovie(BuildConfig.MOVIE_DB_API_KEY, DatabaseContract.LANG);
+        Call<ResponseMovies> call = service.getUpComingMovie(BuildConfig.MOVIE_DB_API_KEY, DatabaseContract.LANG);
         call.enqueue(new Callback<ResponseMovies>() {
             @Override
             public void onResponse(Call<ResponseMovies> call, Response<ResponseMovies> response) {
@@ -96,7 +95,7 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
 
             @Override
             public void onFailure(Call<ResponseMovies> call, Throwable t) {
-                Log.d("getNowPlayingMovie", "onFailure: " + t.toString());
+                Log.d("getUpCommingMovie", "onFailure: " + t.toString());
             }
         });
     }
@@ -105,9 +104,12 @@ public class ReminderReleaseReceiver extends BroadcastReceiver {
         NotificationManager notificationManagerCompat = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        Intent intent = new Intent(context, DetailMovieActivity.class);
-        intent.putExtra(DetailMovieActivity.sessionMovie, String.valueOf(item));
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, notifId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent i = new Intent(context, DetailMovieActivity.class);
+        i.putExtra("title", item.getTitle());
+        i.putExtra("poster_path", item.getPosterPath());
+        i.putExtra("overview", item.getOverview());
+        i.putExtra("release_date", item.getReleaseDate());
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, notifId, i, PendingIntent.FLAG_UPDATE_CURRENT);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, message)
                 .setSmallIcon(R.mipmap.ic_launcher_round)

@@ -3,7 +3,6 @@ package xyz.rifafauzi.id.projectcataloguemovieextendedapp;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Movie;
 import android.net.Uri;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
-import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 
 import static xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract.FavoriteColumns.CONTENT_URI;
 
@@ -29,8 +27,6 @@ public class DetailMovieActivity extends AppCompatActivity {
     TextView tvJudul, tvDesc, tvTgl;
     CoordinatorLayout coordinatorLayout;
 
-    public static String sessionMovie = "sessionMovie";
-    private Movies movies;
     private long id;
 
     @Override
@@ -44,20 +40,6 @@ public class DetailMovieActivity extends AppCompatActivity {
         tvTgl = findViewById(R.id.tgl);
         fvFav = findViewById(R.id.love);
         coordinatorLayout = findViewById(R.id.coordinatorLayout);
-
-        if (getIntent().getParcelableExtra(sessionMovie) != null) {
-            movies = getIntent().getParcelableExtra(sessionMovie);
-            Glide.with(getApplicationContext())
-                    .load(DatabaseContract.IMAGE + movies.getPosterPath())
-                    .placeholder(R.drawable.loading)
-                    .error(R.drawable.error)
-                    .into(tvImg);
-            tvJudul.setText(movies.getTitle());
-            setTitle(movies.getTitle());
-            tvTgl.setText(String.format("Update at:%s", movies.getReleaseDate()));
-            tvDesc.setText(movies.getOverview());
-        }
-
 
         setMovie();
         setFavorite();
@@ -76,7 +58,7 @@ public class DetailMovieActivity extends AppCompatActivity {
         tgl = getIntent().getStringExtra("release_date");
 
         Glide.with(getApplicationContext())
-                .load("http://image.tmdb.org/t/p/w185"+img)
+                .load(DatabaseContract.IMAGE+img)
                 .placeholder(R.drawable.loading)
                 .error(R.drawable.error)
                 .into(tvImg);
