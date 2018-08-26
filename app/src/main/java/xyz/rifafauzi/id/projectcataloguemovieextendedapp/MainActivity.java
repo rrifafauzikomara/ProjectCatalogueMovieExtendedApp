@@ -3,6 +3,7 @@ package xyz.rifafauzi.id.projectcataloguemovieextendedapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MenuItemCompat;
@@ -60,18 +61,6 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        rvMovies = findViewById(R.id.rv_movies);
-
-        apiService = Server.getAPIService();
-
-        adapter = new MovieAdapter(getApplicationContext(), listMovies);
-
-        rvMovies.setHasFixedSize(true);
-        rvMovies.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        rvMovies.setAdapter(adapter);
-
-        refresh();
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -80,6 +69,34 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        setVariable();
+        if(savedInstanceState!=null){
+            ArrayList<Movies> list;
+            list = savedInstanceState.getParcelableArrayList("list_movie");
+            adapter = new MovieAdapter(getApplicationContext(), list);
+            rvMovies.setAdapter(adapter);
+        }else{
+            refresh();
+        }
+
+//        refresh();
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("list_movie", new ArrayList<>(listMovies));
+    }
+
+    private void setVariable () {
+        rvMovies = findViewById(R.id.rv_movies);
+        apiService = Server.getAPIService();
+        adapter = new MovieAdapter(getApplicationContext(), listMovies);
+        rvMovies.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rvMovies.setHasFixedSize(true);
+        rvMovies.setAdapter(adapter);
     }
 
     @Override

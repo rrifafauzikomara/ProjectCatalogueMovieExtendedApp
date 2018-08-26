@@ -95,7 +95,7 @@ public class SettingActivity extends AppCompatActivity {
     }
 
     private void releaseReminderOn() {
-        String time = "03:31";
+        String time = "08:00";
         String message = "Release Movie, please wait come back soon";
         reminderPreference.setReminderReleaseTime(time);
         reminderPreference.setReminderReleaseMessage(message);
@@ -106,8 +106,8 @@ public class SettingActivity extends AppCompatActivity {
         reminderReceiverRelease.cancelReminder(SettingActivity.this);
     }
     private void dailyReminderOn() {
-        String time = "03:31";
-        String message = "Daily Movie, please wait come back soon";
+        String time = "07:00";
+        String message = "Daily Movie Missing You, please wait come back soon";
         reminderPreference.setReminderDailyTime(time);
         reminderPreference.setReminderDailyMessage(message);
         reminderReceiverDaily.setReminder(SettingActivity.this, DatabaseContract.TYPE_REMINDER_RECIEVE, time, message);

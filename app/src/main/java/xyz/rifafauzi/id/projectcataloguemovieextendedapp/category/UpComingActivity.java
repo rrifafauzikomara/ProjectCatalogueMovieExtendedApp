@@ -38,21 +38,36 @@ public class UpComingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_up_coming);
 
-        rvMovies = findViewById(R.id.rv_movies);
+        setVariable();
+        if(savedInstanceState!=null){
+            ArrayList<Movies> list;
+            list = savedInstanceState.getParcelableArrayList("list_movie");
+            adapter = new MovieAdapter(getApplicationContext(), list);
+            rvMovies.setAdapter(adapter);
+        }else{
+            refresh();
+        }
 
-        apiService = Server.getAPIService();
-
-        adapter = new MovieAdapter(getApplicationContext(), listMovies);
-
-        rvMovies.setHasFixedSize(true);
-        rvMovies.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        rvMovies.setAdapter(adapter);
-
-        refresh();
+//        refresh();
 
         //membuat back button toolbar
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelableArrayList("list_movie", new ArrayList<>(listMovies));
+    }
+
+    private void setVariable() {
+        rvMovies = findViewById(R.id.rv_movies);
+        apiService = Server.getAPIService();
+        adapter = new MovieAdapter(getApplicationContext(), listMovies);
+        rvMovies.setHasFixedSize(true);
+        rvMovies.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        rvMovies.setAdapter(adapter);
     }
 
     private void refresh(){
