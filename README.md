@@ -19,10 +19,12 @@ Aplikasi katalog movie untuk submission terakhir beasiswa MADE (Menjadi Android 
 
 ### Persyaratan aplikasi
 
-* [x] Tombol pada detail untuk menambahkan film favorit.
-* [x] Halaman untuk menampilkan list movie favorit.
-* [x] Menggunakan **contentprovider**.
-* [x] Membuat aplikasi baru yaitu aplikasi favorit (boleh dengan menggunakan module baru) untuk mengakses list favorit.
+* [x] Tambahkan widget favorit movie dengan menggunakan StackWidget.
+* [x] Tambahkan scheduler untuk :
+1. Daily Reminder, mengingatkan untuk kembali ke catalog movie. Daily reminder harus selalu berjalan tiap jam 7 pagi.
+2. Release Today Reminder, menampilkan film yang release hari ini. Release reminder harus selalu berjalan tiap jam 8 pagi.
+* [x] Harus bisa menyesuaikan orientasi portrait dan landscape.
+* [x] Harus bisa menjaga data yang sudah dimuat / ditampilkan.
 
 
 ### Petunjuk menjalankan source code aplikasi
