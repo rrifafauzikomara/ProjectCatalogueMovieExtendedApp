@@ -17,6 +17,9 @@ Aplikasi katalog movie untuk submission terakhir beasiswa MADE (Menjadi Android 
 <img src="Screenshot/Screenshot_20180829-163706_Samsung Experience Home.jpg" width="250" height="444">
 </pre>
 
+### Notes
+Untuk fitur ***notification*** setelah diaktifkan akan muncul notifikasi untuk release film sesuai tgl release setiap jam 08:00 pagi dan akan ada notifikasi pengingat setiap jam 07:00 pagi hanya berlaku di sistem operasi </ ***Nouget*** untuk sistem operasi ***Oreo*** tidak akan muncul. Maybe next time akan saya edit untuk muncul di sistem operasi Oreo :D
+
 ### Persyaratan aplikasi
 
 * [x] Tambahkan widget favorit movie dengan menggunakan StackWidget.
