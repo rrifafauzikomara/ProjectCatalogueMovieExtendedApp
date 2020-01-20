@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".category.TopRatedActivity">
 
-    <android.support.v7.widget.RecyclerView
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_below="@+id/toolbar"
         android:id="@+id/rv_movies"
         android:layout_width="match_parent"

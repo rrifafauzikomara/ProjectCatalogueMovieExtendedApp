@@ -1,11 +1,11 @@
 package xyz.rifafauzi.id.projectcataloguemovieextendedapp.category;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -16,8 +16,6 @@ import java.util.Objects;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-import xyz.rifafauzi.id.projectcataloguemovieextendedapp.BuildConfig;
-import xyz.rifafauzi.id.projectcataloguemovieextendedapp.MainActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.adapter.MovieAdapter;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.api.BaseApiService;
@@ -25,8 +23,6 @@ import xyz.rifafauzi.id.projectcataloguemovieextendedapp.api.Server;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.Movies;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.entity.ResponseMovies;
-
-import static xyz.rifafauzi.id.projectcataloguemovieextendedapp.db.DatabaseContract.API_KEY;
 
 public class MostPopularActivity extends AppCompatActivity {
 

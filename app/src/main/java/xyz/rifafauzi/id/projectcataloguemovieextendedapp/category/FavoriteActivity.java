@@ -1,20 +1,18 @@
 package xyz.rifafauzi.id.projectcataloguemovieextendedapp.category;
 
-import android.content.Intent;
 import android.database.Cursor;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import java.util.Objects;
 
-import xyz.rifafauzi.id.projectcataloguemovieextendedapp.MainActivity;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.R;
 import xyz.rifafauzi.id.projectcataloguemovieextendedapp.adapter.FavoriteAdapter;
 
